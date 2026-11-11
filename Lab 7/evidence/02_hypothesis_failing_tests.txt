@@ -1,0 +1,89 @@
+Downloading pygments (1.2MiB)
+ Downloaded pygments
+Installed 8 packages in 478ms
+FFF                                                                      [100%]
+================================== FAILURES ===================================
+_______________________ test_sanitize_meter_id_no_crash _______________________
+
+    @given(st.one_of(st.text(), st.none()))
+>   def test_sanitize_meter_id_no_crash(value):
+                   ^^^
+
+test_processor.py:11: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+test_processor.py:13: in test_sanitize_meter_id_no_crash
+    result = sanitize_meter_id(value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+meter_id = None
+
+    def sanitize_meter_id(meter_id):
+>       meter_id = meter_id.strip()
+                   ^^^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'strip'
+E       Failing test case: test_sanitize_meter_id_no_crash(
+E           value=None,
+E       )
+
+processor.py:2: AttributeError
+____________________ test_parse_consumption_readings_safe _____________________
+
+    @given(st.one_of(st.text(), st.none()))
+>   def test_parse_consumption_readings_safe(value):
+                   ^^^
+
+test_processor.py:26: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+test_processor.py:28: in test_parse_consumption_readings_safe
+    result = parse_consumption_readings(value)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+readings_csv = None
+
+    def parse_consumption_readings(readings_csv):
+>       readings = readings_csv.split(',')
+                   ^^^^^^^^^^^^^^^^^^
+E       AttributeError: 'NoneType' object has no attribute 'split'
+E       Failing test case: test_parse_consumption_readings_safe(
+E           value=None,
+E       )
+
+processor.py:8: AttributeError
+______________________ test_format_billing_summary_safe _______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "C:\Users\carbo\projects\caliper\water-utility-assignment\Lab 7\test_processor.py", line 38, in test_format_billing_summary_safe
+  |     def test_format_billing_summary_safe(value):
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\carbo\projects\caliper\water-utility-assignment\Lab 7\test_processor.py", line 40, in test_format_billing_summary_safe
+    |     result = format_billing_summary(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\carbo\projects\caliper\water-utility-assignment\Lab 7\processor.py", line 14, in format_billing_summary
+    |     units = int(parts[1])
+    |                 ~~~~~^^^
+    | IndexError: list index out of range
+    | Failing test case: test_format_billing_summary_safe(
+    |     value='',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "C:\Users\carbo\projects\caliper\water-utility-assignment\Lab 7\test_processor.py", line 40, in test_format_billing_summary_safe
+    |     result = format_billing_summary(value)
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "C:\Users\carbo\projects\caliper\water-utility-assignment\Lab 7\processor.py", line 12, in format_billing_summary
+    |     parts = account_record.split(':')
+    |             ^^^^^^^^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_format_billing_summary_safe(
+    |     value=None,
+    | )
+    +------------------------------------
+=========================== short test summary info ===========================
+FAILED test_processor.py::test_sanitize_meter_id_no_crash - AttributeError: '...
+FAILED test_processor.py::test_parse_consumption_readings_safe - AttributeErr...
+FAILED test_processor.py::test_format_billing_summary_safe - ExceptionGroup: ...
+3 failed in 2.22s

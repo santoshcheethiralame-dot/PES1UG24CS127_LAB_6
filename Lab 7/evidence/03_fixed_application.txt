@@ -1,0 +1,8 @@
+==== Running sanitize_meter_id ====
+Enter a meter ID with prefixes (!,@,#,$,%): Sanitized Meter ID: MTR1234
+
+==== Running parse_consumption_readings ====
+Enter consumption readings (e.g. 10,25,30): Parsed Readings: [10, 25, 30]
+
+==== Running format_billing_summary ====
+Enter account record (Name:Usage:Zone): Billing Summary: Customer Alice billed 100 USD in North

@@ -1,0 +1,8 @@
+==== Running sanitize_meter_id ====
+Enter a meter ID with prefixes (!,@,#,$,%): Invalid meter ID: Meter ID cannot be empty
+
+==== Running parse_consumption_readings ====
+Enter consumption readings (e.g. 10,25,30): Invalid consumption readings: Readings cannot contain empty values
+
+==== Running format_billing_summary ====
+Enter account record (Name:Usage:Zone): Invalid account record: Account record must use Name:Usage:Zone format
